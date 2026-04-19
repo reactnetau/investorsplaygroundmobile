@@ -1,0 +1,892 @@
+{
+  "auth": {
+    "user_pool_id": "ap-southeast-2_KD3uvk09c",
+    "aws_region": "ap-southeast-2",
+    "user_pool_client_id": "6l3nam55eog765losr5b013re4",
+    "identity_pool_id": "ap-southeast-2:48e94dee-4a2d-437c-9a78-4374e32c6a1e",
+    "mfa_methods": [],
+    "standard_required_attributes": [
+      "email"
+    ],
+    "username_attributes": [
+      "email"
+    ],
+    "user_verification_types": [
+      "email"
+    ],
+    "groups": [],
+    "mfa_configuration": "NONE",
+    "password_policy": {
+      "min_length": 8,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "require_symbols": true,
+      "require_uppercase": true
+    },
+    "unauthenticated_identities_enabled": true
+  },
+  "data": {
+    "url": "https://svmikvqupngefjvsa5husiqf3a.appsync-api.ap-southeast-2.amazonaws.com/graphql",
+    "aws_region": "ap-southeast-2",
+    "default_authorization_type": "AMAZON_COGNITO_USER_POOLS",
+    "authorization_types": [
+      "AWS_IAM"
+    ],
+    "model_introspection": {
+      "version": 1,
+      "models": {
+        "UserProfile": {
+          "name": "UserProfile",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "owner": {
+              "name": "owner",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "email": {
+              "name": "email",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "subscriptionStatus": {
+              "name": "subscriptionStatus",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "subscriptionEndDate": {
+              "name": "subscriptionEndDate",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": []
+            },
+            "subscriptionProvider": {
+              "name": "subscriptionProvider",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "subscriptionProductId": {
+              "name": "subscriptionProductId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "revenueCatAppUserId": {
+              "name": "revenueCatAppUserId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "currency": {
+              "name": "currency",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "activePortfolioId": {
+              "name": "activePortfolioId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "createdAt": {
+              "name": "createdAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            },
+            "updatedAt": {
+              "name": "updatedAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            }
+          },
+          "syncable": true,
+          "pluralName": "UserProfiles",
+          "attributes": [
+            {
+              "type": "model",
+              "properties": {}
+            },
+            {
+              "type": "key",
+              "properties": {
+                "name": "byOwner",
+                "queryField": "listUserProfileByOwner",
+                "fields": [
+                  "owner"
+                ]
+              }
+            },
+            {
+              "type": "auth",
+              "properties": {
+                "rules": [
+                  {
+                    "provider": "userPools",
+                    "ownerField": "owner",
+                    "allow": "owner",
+                    "identityClaim": "sub",
+                    "operations": [
+                      "create",
+                      "update",
+                      "delete",
+                      "read"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "primaryKeyInfo": {
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
+          }
+        },
+        "Portfolio": {
+          "name": "Portfolio",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "owner": {
+              "name": "owner",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "name": {
+              "name": "name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "cash": {
+              "name": "cash",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true,
+              "attributes": []
+            },
+            "startingCash": {
+              "name": "startingCash",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true,
+              "attributes": []
+            },
+            "currency": {
+              "name": "currency",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "currentDay": {
+              "name": "currentDay",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": []
+            },
+            "createdAt": {
+              "name": "createdAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            },
+            "updatedAt": {
+              "name": "updatedAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            }
+          },
+          "syncable": true,
+          "pluralName": "Portfolios",
+          "attributes": [
+            {
+              "type": "model",
+              "properties": {}
+            },
+            {
+              "type": "key",
+              "properties": {
+                "name": "byOwner",
+                "queryField": "listPortfolioByOwner",
+                "fields": [
+                  "owner"
+                ]
+              }
+            },
+            {
+              "type": "auth",
+              "properties": {
+                "rules": [
+                  {
+                    "provider": "userPools",
+                    "ownerField": "owner",
+                    "allow": "owner",
+                    "identityClaim": "sub",
+                    "operations": [
+                      "create",
+                      "update",
+                      "delete",
+                      "read"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "primaryKeyInfo": {
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
+          }
+        },
+        "Holding": {
+          "name": "Holding",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "owner": {
+              "name": "owner",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "portfolioId": {
+              "name": "portfolioId",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "code": {
+              "name": "code",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "buyPrice": {
+              "name": "buyPrice",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true,
+              "attributes": []
+            },
+            "quantity": {
+              "name": "quantity",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true,
+              "attributes": []
+            },
+            "currentPrice": {
+              "name": "currentPrice",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "priceCurrency": {
+              "name": "priceCurrency",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "purchasedOn": {
+              "name": "purchasedOn",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": true,
+              "attributes": []
+            },
+            "volatility": {
+              "name": "volatility",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "momentumBias": {
+              "name": "momentumBias",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "createdAt": {
+              "name": "createdAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            },
+            "updatedAt": {
+              "name": "updatedAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            }
+          },
+          "syncable": true,
+          "pluralName": "Holdings",
+          "attributes": [
+            {
+              "type": "model",
+              "properties": {}
+            },
+            {
+              "type": "key",
+              "properties": {
+                "name": "byOwner",
+                "queryField": "listHoldingByOwner",
+                "fields": [
+                  "owner"
+                ]
+              }
+            },
+            {
+              "type": "key",
+              "properties": {
+                "name": "byPortfolio",
+                "queryField": "listHoldingByPortfolioId",
+                "fields": [
+                  "portfolioId"
+                ]
+              }
+            },
+            {
+              "type": "auth",
+              "properties": {
+                "rules": [
+                  {
+                    "provider": "userPools",
+                    "ownerField": "owner",
+                    "allow": "owner",
+                    "identityClaim": "sub",
+                    "operations": [
+                      "create",
+                      "update",
+                      "delete",
+                      "read"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "primaryKeyInfo": {
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
+          }
+        }
+      },
+      "enums": {},
+      "nonModels": {
+        "InitializeUserProfileReturnType": {
+          "name": "InitializeUserProfileReturnType",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "subscriptionStatus": {
+              "name": "subscriptionStatus",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "currency": {
+              "name": "currency",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "CreatePortfolioWithLimitsReturnType": {
+          "name": "CreatePortfolioWithLimitsReturnType",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "errorCode": {
+              "name": "errorCode",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "BuyHoldingReturnType": {
+          "name": "BuyHoldingReturnType",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "errorCode": {
+              "name": "errorCode",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "SellHoldingReturnType": {
+          "name": "SellHoldingReturnType",
+          "fields": {
+            "ok": {
+              "name": "ok",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": false,
+              "attributes": []
+            },
+            "cashRestored": {
+              "name": "cashRestored",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "gainLossPct": {
+              "name": "gainLossPct",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "ResetPortfolioReturnType": {
+          "name": "ResetPortfolioReturnType",
+          "fields": {
+            "ok": {
+              "name": "ok",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "FetchPriceReturnType": {
+          "name": "FetchPriceReturnType",
+          "fields": {
+            "code": {
+              "name": "code",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "price": {
+              "name": "price",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "currency": {
+              "name": "currency",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "cached": {
+              "name": "cached",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "RefreshPricesReturnType": {
+          "name": "RefreshPricesReturnType",
+          "fields": {
+            "ok": {
+              "name": "ok",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": false,
+              "attributes": []
+            },
+            "updatedCount": {
+              "name": "updatedCount",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "SyncSubscriptionStateReturnType": {
+          "name": "SyncSubscriptionStateReturnType",
+          "fields": {
+            "ok": {
+              "name": "ok",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": false,
+              "attributes": []
+            },
+            "subscriptionStatus": {
+              "name": "subscriptionStatus",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "subscriptionEndDate": {
+              "name": "subscriptionEndDate",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        }
+      },
+      "queries": {
+        "fetchPrice": {
+          "name": "fetchPrice",
+          "isArray": false,
+          "type": {
+            "nonModel": "FetchPriceReturnType"
+          },
+          "isRequired": false,
+          "arguments": {
+            "code": {
+              "name": "code",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            }
+          }
+        }
+      },
+      "mutations": {
+        "initializeUserProfile": {
+          "name": "initializeUserProfile",
+          "isArray": false,
+          "type": {
+            "nonModel": "InitializeUserProfileReturnType"
+          },
+          "isRequired": false,
+          "arguments": {
+            "email": {
+              "name": "email",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "currency": {
+              "name": "currency",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        },
+        "createPortfolioWithLimits": {
+          "name": "createPortfolioWithLimits",
+          "isArray": false,
+          "type": {
+            "nonModel": "CreatePortfolioWithLimitsReturnType"
+          },
+          "isRequired": false,
+          "arguments": {
+            "name": {
+              "name": "name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "currency": {
+              "name": "currency",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "startingCash": {
+              "name": "startingCash",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            }
+          }
+        },
+        "buyHolding": {
+          "name": "buyHolding",
+          "isArray": false,
+          "type": {
+            "nonModel": "BuyHoldingReturnType"
+          },
+          "isRequired": false,
+          "arguments": {
+            "portfolioId": {
+              "name": "portfolioId",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true
+            },
+            "code": {
+              "name": "code",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "buyPrice": {
+              "name": "buyPrice",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true
+            },
+            "quantity": {
+              "name": "quantity",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true
+            },
+            "purchasedOn": {
+              "name": "purchasedOn",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "volatility": {
+              "name": "volatility",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "momentumBias": {
+              "name": "momentumBias",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            }
+          }
+        },
+        "sellHolding": {
+          "name": "sellHolding",
+          "isArray": false,
+          "type": {
+            "nonModel": "SellHoldingReturnType"
+          },
+          "isRequired": false,
+          "arguments": {
+            "holdingId": {
+              "name": "holdingId",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true
+            },
+            "quantity": {
+              "name": "quantity",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            }
+          }
+        },
+        "resetPortfolio": {
+          "name": "resetPortfolio",
+          "isArray": false,
+          "type": {
+            "nonModel": "ResetPortfolioReturnType"
+          },
+          "isRequired": false,
+          "arguments": {
+            "portfolioId": {
+              "name": "portfolioId",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true
+            }
+          }
+        },
+        "refreshPrices": {
+          "name": "refreshPrices",
+          "isArray": false,
+          "type": {
+            "nonModel": "RefreshPricesReturnType"
+          },
+          "isRequired": false,
+          "arguments": {
+            "portfolioId": {
+              "name": "portfolioId",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true
+            }
+          }
+        },
+        "syncSubscriptionState": {
+          "name": "syncSubscriptionState",
+          "isArray": false,
+          "type": {
+            "nonModel": "SyncSubscriptionStateReturnType"
+          },
+          "isRequired": false,
+          "arguments": {
+            "appUserId": {
+              "name": "appUserId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "entitlementIdentifier": {
+              "name": "entitlementIdentifier",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "entitlementActive": {
+              "name": "entitlementActive",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true
+            },
+            "productIdentifier": {
+              "name": "productIdentifier",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "expirationDate": {
+              "name": "expirationDate",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.4"
+}

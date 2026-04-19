@@ -1,23 +1,26 @@
 {
   "cli": {
-    "version": ">= 5.9.3"
+    "version": ">= 16.0.0"
   },
   "build": {
     "development": {
       "developmentClient": true,
       "distribution": "internal",
       "ios": {
+        "image": "macos-sequoia-15.6-xcode-26.2",
         "simulator": true
       }
     },
     "preview": {
       "distribution": "internal",
       "ios": {
+        "image": "macos-sequoia-15.6-xcode-26.2",
         "simulator": false
       }
     },
     "production": {
       "ios": {
+        "image": "macos-sequoia-15.6-xcode-26.2",
         "buildConfiguration": "Release"
       },
       "android": {
